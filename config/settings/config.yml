@@ -1,0 +1,33 @@
+defaults: &defaults
+  redis:
+    host: localhost
+    port: 6379
+  redis_namespace: azl
+  domain: azl
+  tld: dev:3000
+  bshare_uuid: e285101a-1514-4afe-84e2-c76d9729d3d9
+
+
+development:
+  <<: *defaults
+
+prodev:
+  <<: *defaults
+
+qa:
+  <<: *defaults
+  asset_host: http://asset.49393.com
+  tld: com
+
+production:
+  <<: *defaults
+  redis:
+    host: r-m5ee2918da61e1c4.redis.rds.aliyuncs.com
+    port: 6379
+    password: aLi4azL8
+  redis_namespace: azl
+  asset_host: http://asset.azl.com.cn
+  tld: com.cn
+
+test:
+  <<: *defaults

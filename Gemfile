@@ -24,6 +24,12 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
+gem 'redis-objects'
+gem 'settingslogic', '2.0.9'
+gem 'resque' 
+gem 'resque-scheduler', '~> 4.0.0' # 高版本的resque后台不显示定时任务
+gem 'redis-activesupport'
+gem 'redis-objects'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
