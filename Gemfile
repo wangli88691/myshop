@@ -30,6 +30,8 @@ gem 'resque'
 gem 'resque-scheduler', '~> 4.0.0' # 高版本的resque后台不显示定时任务
 gem 'redis-activesupport'
 gem 'redis-objects'
+
+gem 'adminlte-rails', github: 'zhangcaiyan/adminlte-rails'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

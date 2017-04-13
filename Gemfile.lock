@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/zhangcaiyan/adminlte-rails.git
+  revision: bea4b7de60516e67a2bcd44151f7fa10d667fc29
+  specs:
+    adminlte-rails (2.3.6)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -185,6 +191,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  adminlte-rails!
   byebug
   coffee-rails (~> 4.2)
   jbuilder (~> 2.5)
