@@ -1,0 +1,2 @@
+class MemberCardRecord < ApplicationRecord
+end
