@@ -22,6 +22,6 @@ Rails.application.routes.draw do
   	# devise_scope :user do
   	# 	post "/user", as: "user_registration", to: "user/registrations#create"
   	# end
-
+    resources :members
   	root to: "home#index"
   end
