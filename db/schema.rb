@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170419062907) do
+ActiveRecord::Schema.define(version: 20170424084738) do
 
   create_table "consume_records", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.decimal  "consumer_amount", precision: 10
@@ -33,8 +33,14 @@ ActiveRecord::Schema.define(version: 20170419062907) do
     t.string   "telephone"
     t.string   "card_number"
     t.integer  "consumption_number"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                                                null: false
+    t.datetime "updated_at",                                                null: false
+    t.string   "type"
+    t.decimal  "account",                          precision: 10, scale: 2
+    t.string   "discount"
+    t.string   "brand"
+    t.text     "comments",           limit: 65535
+    t.integer  "worker_id"
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

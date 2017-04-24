@@ -1,0 +1,2 @@
+class JuMember < Member
+end

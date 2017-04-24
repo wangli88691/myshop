@@ -1,0 +1,2 @@
+class JianMember < Member
+end

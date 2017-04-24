@@ -1,0 +1,2 @@
+class TangMember < Member
+end

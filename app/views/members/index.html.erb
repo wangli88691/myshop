@@ -1,6 +1,6 @@
 <section class="content-header">
   <h1>
-    Data Tables
+    会员列表
     <small>advanced tables</small>
   </h1>
   <ol class="breadcrumb">
@@ -10,14 +10,68 @@
   </ol>
 </section>
 <section class="content">
+
+  <%= form_tag members_path, method: "get", role: "form" do %>
+  <div class="row">
+
+    <div class="col-sm-3">
+      <div class="form-group">
+        <label class="control-label" for="status">会员手机号</label>
+        <%= text_field_tag "search[member_name_eq]", params["search"].try(:[], :user_username_eq), class: "form-control" %>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="form-group">
+        <label class="control-label" for="order_id">会员卡号</label>
+        <%= text_field_tag "search[telephone_cont]", params["search"].try(:[], :order_number_cont), class: "form-control" %>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="form-group">
+        <label class="control-label" for="order_id">会员姓名</label>
+        <%= text_field_tag "search[telephone_cont]", params["search"].try(:[], :order_number_cont), class: "form-control" %>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="form-group">
+        <label class="control-label" for="order_id">会员类型</label>
+        <%= text_field_tag "search[telephone_cont]", params["search"].try(:[], :order_number_cont), class: "form-control" %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="form-group">
+        <button type="submit" class="btn btn-info pull-right form-control">搜索</button>
+      </div>
+    </div>
+  </div></br>
+  <% end %>
+
   <div class="row">
     <div class="col-xs-12">
+
+
       <div class="box">
-        <div class="box-header">
-          <h3 class="box-title">Data Table With Full Features</h3>
-        </div>
-        <!-- /.box-header -->
         <div class="box-body">
+          <ul class="nav nav-tabs">
+            <li role="presentation" class="active">
+              <%= link_to "剪发卡会员", "" %>
+            </li>
+            <li role="presentation" class="">
+              <%= link_to "烫染卡会员", "" %>
+            </li>
+            <li role="presentation" class="">
+              <%= link_to "护理套装会员", "" %>
+            </li>
+          </ul></br>
+          <div class="row">
+            <div class="col-sm-3">
+              <div class="form-group">
+                <button type="submit"  class="btn btn-warning  form-control">新增剪发卡会员</button>
+              </div>
+            </div>
+          </div>
           <table id="example1" class="table table-bordered table-striped">
             <thead>
               <tr>
@@ -41,8 +95,8 @@
             </tbody>
             
           </table>
-           共<%= @members.total_entries %>条数据<%= will_paginate @members ,renderer: BootstrapPagination::Rails ,class: "pull-right", previous_label: '上一页', next_label: '下一页' %>
-           <%= will_paginate @members  ,class: "pull-right", previous_label: '上一页', next_label: '下一页' %>
+          共<%= @members.total_entries %>条数据
+          <%= will_paginate @members  ,class: "pull-right", previous_label: '上一页', next_label: '下一页' %>
         </div>
         <!-- /.box-body -->
       </div>
