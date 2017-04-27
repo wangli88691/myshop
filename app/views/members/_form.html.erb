@@ -1,0 +1,132 @@
+<%= simple_form_for(@member, as: "member", url: @member.new_record? ? members_path : member_path(@member.id) , html: {role: "form", class: "member_form"}) do |f| %>
+<div class="form-group">
+  <label><span style="color: red ">*</span>会员姓名</label>
+  <%= f.text_field :member_name, class: "form-control" , placeholder: "请填写会员姓名"%>
+</div>
+<div class="form-group">
+  <label><span style="color: red ">*</span>会员手机号</label>
+  <%= f.text_field :telephone, class: "form-control" , placeholder: "请填写会员手机号"%>
+</div>
+<div class="form-group">
+  <label><span style="color: red ">*</span>会员卡卡号</label>
+  <%= f.text_field :card_number, class: "form-control" , placeholder: "请填写会员卡卡号"%>
+</div>
+<div class="form-group">
+  <label><span style="color: red ">*</span>会员卡金额</label>
+  <%= f.number_field :account, class: "form-control" , placeholder: "请填写会员卡金额"%>
+</div>
+<div class="form-group">
+  <label><span style="color: red ">*</span>会员卡经办人</label>
+  <%= f.select :worker_id, options_for_select(Worker.all.map{|t| [t.worker_name, t.id]}, @member.worker_id), {include_blank: '--必填--' }, class: "form-control" %>
+</div>
+<%= f.hidden_field :type , value: @type %>
+
+<% if @type == "JianMember"%>
+
+<div class="form-group">
+  <label><span style="color: red ">*</span>剪发卡剪发次数</label>
+  <%= f.number_field :consumption_number, class: "form-control" , placeholder: "剪发卡剪发次数"%>
+</div>
+
+<% elsif @type == "TangMember" %>
+
+<div class="form-group">
+  <label><span style="color: red ">*</span>烫染卡折扣</label>
+  <%= f.number_field :discount, class: "form-control" , placeholder: "例: 5 <表示5折>"%>
+</div>
+
+<% elsif @type == "JuMember" %>
+
+<div class="form-group">
+  <label>护理套装品牌</label>
+  <%= f.text_field :brand, class: "form-control" , placeholder: "护理套装品牌"%>
+</div>
+
+<% end %>
+
+<div class="form-group">
+  <label>会员卡备注</label>
+  <%= f.text_area :comments, class: "form-control" ,rows: "3" ,style:"resize:none;"%>
+</div>
+<div class="box-footer">
+  <%= submit_tag "保存", class: "btn btn-primary" %>
+</div>
+<% end %>
+<% content_for :script do %>
+<script>
+
+  $(function(){
+    var validator = $(".member_form").validate({
+      onsubmit: true,
+      errorClass: "error_msg",
+      // onkeyup: false,
+      // onfocusout: false,
+      // onclick: false,
+      cache: false,
+      rules: {
+        "member[member_name]": {
+          required: true
+        },
+        "member[telephone]": {
+          required: true
+        },
+        "member[card_number]": {
+          required: true
+        },
+        "member[account]": {
+          required: true,
+          number: true,
+          min: 100
+        },
+        "member[worker_id]":{
+          required: true
+        },
+        "member[discount]":{
+          required: true,
+          number: true,
+          min: 5
+        },
+        "member[consumption_number]":{
+          required: true,
+          number: true
+        },
+        "member[brand]":{
+          required: true
+        }
+      },
+      messages: {
+        "member[member_name]":{
+          required: "会员姓名不能为空"
+        },
+        
+        "member[telephone]":{
+          required: "会员手机号不能为空"
+        },
+        "member[card_number]":{
+          required: "会员卡号不能为空"
+        },
+        "member[account]":{
+          required: "会员卡金额不能为空",
+          number: "会员卡金额只能是数字",
+          min: "会员卡金额最小为100元"
+        },
+        "member[worker_id]":{
+          required: "请选择会员卡经办人"
+        },
+        "member[discount]":{
+          required: "烫染卡折扣不能为空",
+          number: "折扣只能填写数字",
+          min: "折扣最低5折"
+        },
+        "member[consumption_number]":{
+          required: "剪发卡剪发次数不能为空",
+          number: "剪发次数只能填写数字"
+        },
+        "member[brand]":{
+          required: "护理套装品牌不能为空"
+        }
+      }
+    })
+  })
+</script>
+<% end %>

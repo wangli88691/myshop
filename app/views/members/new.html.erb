@@ -1,7 +1,7 @@
 <section class="content-header">
   <h1>
-   新增会员卡
-   <small>Preview</small>
+   <span class="label label-info">新增<%= Member.type.value_label_map[@type] %></span>
+   <!-- <small>Preview</small> -->
  </h1>
  <ol class="breadcrumb">
   <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -22,61 +22,7 @@
           <h3 class="box-title">新增会员卡</h3>
         </div>
         <div class="box-body">
-
-          <%= simple_form_for(@member, as: "member", url: @member.new_record? ? members_path : member_path(@member.id) , html: {role: "form", class: "member_form"}) do |f| %>
-          <div class="form-group">
-            <label><span style="color: red ">*</span>会员姓名</label>
-            <%= f.text_field :member_name, class: "form-control" , placeholder: "请填写会员姓名"%>
-          </div>
-          <div class="form-group">
-            <label><span style="color: red ">*</span>会员手机号</label>
-            <%= f.text_field :telephone, class: "form-control" , placeholder: "请填写会员手机号"%>
-          </div>
-          <div class="form-group">
-            <label><span style="color: red ">*</span>会员卡卡号</label>
-            <%= f.text_field :card_number, class: "form-control" , placeholder: "请填写会员卡卡号"%>
-          </div>
-          <div class="form-group">
-            <label><span style="color: red ">*</span>会员卡金额</label>
-            <%= f.number_field :account, class: "form-control" , placeholder: "请填写会员卡金额"%>
-          </div>
-          <div class="form-group">
-            <label><span style="color: red ">*</span>会员卡经办人</label>
-            <%= f.select :worker_id, options_for_select(Worker.all.map{|t| [t.worker_name, t.id]}, @member.worker_id), {include_blank: '--必填--' }, class: "form-control" %>
-          </div>
-          <%= f.hidden_field :type , value: @type %>
-
-          <% if @type == "JianMember"%>
-
-          <div class="form-group">
-            <label><span style="color: red ">*</span>剪发卡剪发次数</label>
-            <%= f.number_field :consumption_number, class: "form-control" , placeholder: "剪发卡剪发次数"%>
-          </div>
-
-          <% elsif @type == "TangMember" %>
-
-          <div class="form-group">
-            <label><span style="color: red ">*</span>烫染卡折扣</label>
-            <%= f.number_field :account, class: "form-control" , placeholder: "烫染卡折扣"%>
-          </div>
-
-          <% elsif @type == "JuMember" %>
-
-          <div class="form-group">
-            <label>护理套装品牌</label>
-            <%= f.number_field :brand, class: "form-control" , placeholder: "护理套装品牌"%>
-          </div>
-
-          <% end %>
-
-          <div class="form-group">
-            <label>会员卡备注</label>
-            <%= f.text_area :comments, class: "form-control" ,rows: "3" ,style:"resize:none;"%>
-          </div>
-          <div class="box-footer">
-            <%= submit_tag "保存", class: "btn btn-primary" %>
-          </div>
-          <% end %>
+          <%= render partial: 'form' %>
         </div>       
       </div> 
     </div> 

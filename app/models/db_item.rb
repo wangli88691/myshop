@@ -14,6 +14,7 @@ class DbItem
     # eg. {'官方公告': 1, '关注': 2, ...}
     @label_value_map = opts.inject({}){|r, (k,v)| r[v[:label]] = v[:value]; r}
 
+    @value_label_map = opts.inject({}){|r, (k,v)| r[v[:value]] = v[:label] ; r}
   end
 
   #eg. 1 --> 官方公告

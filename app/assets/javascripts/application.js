@@ -16,6 +16,8 @@
 //= require bootstrap.min
 //= require adminlte
 
+
+
 //= require plugins/slimScroll/jquery.slimscroll
 //= require plugins/iCheck/icheck
 //= require plugins/bootstrap-slider/bootstrap-slider
@@ -31,6 +33,7 @@
 //= require plugins/slimScroll/jquery.slimscroll.min
 //= require plugins/sparkline/jquery.sparkline.min
 //= require plugins/timepicker/bootstrap-timepicker.min.js
+
 
 
 //= require_tree .

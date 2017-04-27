@@ -1,9 +1,9 @@
 class MembersController < ApplicationController
 
 	def index
-		# binding.pry
-		@type = params[:search][:type_eq].present? ? params[:search][:type_eq] : "JianMember"
-		@search = Member.search(params[:search] ? params[:search] : {})
+		
+		@type = params[:search].try(:[],:type_eq).present? ? params[:search][:type_eq] : "JianMember"
+		@search = Member.search(params[:search] ? params[:search] : {type_eq: "JianMember"})
 		@members = @search.result.page(params[:page]).per_page(10).order("created_at DESC")
 	end
 
@@ -14,7 +14,7 @@ class MembersController < ApplicationController
 
 	def create
 		@member = Member.create(member_params)
-
+      redirect_to action: 'index'
 	end
 
 	def update
